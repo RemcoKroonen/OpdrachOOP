@@ -10,5 +10,6 @@ class Attack {
 		$this->Name = $Name;
 		$this->Damage = $Damage;
 	}
+	
 
 }

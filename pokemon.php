@@ -46,6 +46,9 @@ class Pokemon {
 			$TotalDamage = $TotalDamage - $AttackedPokemon->Resistance->Worth;
 		}
 		echo "<br>". $TotalDamage;
+		$AttackedPokemon->HitPoints = $AttackedPokemon->HitPoints - $TotalDamage;
+
+		echo "<br> Nieuwe HitPoints is".$AttackedPokemon->HitPoints;
 
 
 	}
