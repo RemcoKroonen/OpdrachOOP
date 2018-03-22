@@ -7,15 +7,16 @@ class Pokemon {
 	public  $Attacks;
 	public  $Weakness;
 	public  $Resistance;
-	public  $Damage;
 
 
-public function __construct($name, $gender, $team, $oneliner)
+public function __construct($Name, $EnergyType, $HitPoints, $Attacks, $Weakness, $Resistance)
 	{
-		$this->name = $name;
-		$this->gender = $gender;
-		$this->team = $team;
-		$this->oneliner = $oneliner;
+		$this->Name = $Name;
+		$this->EnergyType = $EnergyType;
+		$this->HitPoints = $HitPoints;
+		$this->Attacks = $Attacks;
+		$this->Weakness = $Weakness;
+		$this->Resistance = $Resistance;
 	}
 	public function __toString() {
 		return json_encode($this);
