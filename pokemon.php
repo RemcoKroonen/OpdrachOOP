@@ -9,7 +9,7 @@ class Pokemon {
 	public  $Resistance;
 
 
-public function __construct($Name, $EnergyType, $HitPoints, $Attacks, $Weakness, $Resistance)
+	public function __construct($Name, $EnergyType, $HitPoints, $Attacks, $Weakness, $Resistance)
 	{
 		$this->Name = $Name;
 		$this->EnergyType = $EnergyType;
@@ -22,11 +22,33 @@ public function __construct($Name, $EnergyType, $HitPoints, $Attacks, $Weakness,
 		return json_encode($this);
 	}
 
-	public function sayOneliner()
-    {
-        echo '<h2>' . $this->oneliner . '</h2>';
-    }
+	public function Attacks($AttackedPokemon,$AttackName)
+	{
+		$TotalDamage = 0;
+		$AanvalDamage = 0;
+		echo  $this->Name.' valt '. $AttackedPokemon->Name. ' aan met de aanval '.$AttackName;
+		print_r($this->Attacks);
+		foreach ($this->Attacks as $AvailableAttack){
+			if ($AvailableAttack->Name == $AttackName) {
+				$AanvalDamage = $AvailableAttack->Damage;
+			}
+			echo $AvailableAttack->Name;
+			echo $AvailableAttack->Damage;
+		}
 
-    
+		if ($this->EnergyType == $AttackedPokemon->Weakness->EnergyType) {
+			$TotalDamage = $AttackedPokemon->Weakness->Multiplier*$AanvalDamage;
+		} else {
+
+			$TotalDamage = $AanvalDamage;
+		}
+		if ($this->EnergyType == $AttackedPokemon->Resistance->EnergyType) {
+			$TotalDamage = $TotalDamage - $AttackedPokemon->Resistance->Worth;
+		}
+		echo "<br>". $TotalDamage;
+
+
+	}
+
 
 }

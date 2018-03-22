@@ -24,3 +24,5 @@ $Charmeleon =  new Pokemon('Charmeleon', 'Fire', 60, [$CharmeleonAanval1, $Charm
 
 
 print_r('<pre>'. $Charmeleon . '</pre>');
+
+$Pikachu->Attacks($Charmeleon, 'Electric Ring');
