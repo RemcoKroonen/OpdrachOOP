@@ -1,5 +1,5 @@
 <?php
-class Attack {
+class ATTACK {
 
 	public	$Name;
 	public	$Damage;

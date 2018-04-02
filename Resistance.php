@@ -1,5 +1,5 @@
 <?php
-class Resistance {
+class RESISTANCE {
 
 	public	$EnergyType;
 	public	$Worth;

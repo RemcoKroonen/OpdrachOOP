@@ -1,5 +1,5 @@
 <?php
-class Pokemon {
+class POKEMON {
 
 	public	$Name;
 	public	$EnergyType;
@@ -26,32 +26,53 @@ class Pokemon {
 	{
 		$TotalDamage = 0;
 		$AanvalDamage = 0;
+		echo "<br>";
 		echo  $this->Name.' valt '. $AttackedPokemon->Name. ' aan met de aanval '.$AttackName;
-		print_r($this->Attacks);
+		//print_r($this->Attacks);
 		foreach ($this->Attacks as $AvailableAttack){
 			if ($AvailableAttack->Name == $AttackName) {
 				$AanvalDamage = $AvailableAttack->Damage;
 			}
-			echo $AvailableAttack->Name;
-			echo $AvailableAttack->Damage;
+			//echo $AvailableAttack->Name;
+			//echo $AvailableAttack->Damage;
 		}
 
-		if ($this->EnergyType == $AttackedPokemon->Weakness->EnergyType) {
-			$TotalDamage = $AttackedPokemon->Weakness->Multiplier*$AanvalDamage;
-		} else {
+		$TotalDamage = $AanvalDamage;
 
-			$TotalDamage = $AanvalDamage;
+		if ($this->EnergyType == $AttackedPokemon->Weakness->EnergyType) {
+			$TotalDamage = $AttackedPokemon->Weakness->Multiplier*$AanvalDamage; //
 		}
 		if ($this->EnergyType == $AttackedPokemon->Resistance->EnergyType) {
 			$TotalDamage = $TotalDamage - $AttackedPokemon->Resistance->Worth;
 		}
-		echo "<br>". $TotalDamage;
+		echo "<br>Doet ". $TotalDamage . " damage";
 		$AttackedPokemon->HitPoints = $AttackedPokemon->HitPoints - $TotalDamage;
 
-		echo "<br> Nieuwe HitPoints is".$AttackedPokemon->HitPoints;
+		echo "<br> Nieuwe HitPoints van ".$AttackedPokemon->Name . " is " . $AttackedPokemon->HitPoints;
 
 
 	}
+	public function ToonInfo(){
+		echo "<h3>".$this->Name."</h3>";
+		echo "Type: ". $this->EnergyType."<br>";
+		echo "Hitpoints: ". $this->HitPoints."<br>";
+		echo "Attacks and Damage:";
+		foreach ($this->Attacks as $key) {
+			echo " ";
+			echo $key->Name . ",";
+			echo $key->Damage . " ";
+			
+		}
+		echo "<br>";
 
 
+		echo "Weakness: ";
+		echo $this->Weakness->EnergyType . ","; 
+		echo $this->Weakness->Multiplier . "<br>";
+
+
+		echo "Resistance: ";
+		echo $this->Resistance->EnergyType . ",";
+		echo $this->Resistance->Worth . "<br>";
+	}
 }
