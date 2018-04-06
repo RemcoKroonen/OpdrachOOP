@@ -1,14 +1,14 @@
 <?php
-class ATTACK {
+class Attack {
 
-	public	$Name;
-	public	$Damage;
+	public	$name;
+	public	$damage;
 
 
-	public function __construct($Name, $Damage)
+	public function __construct($name, $damage)
 	{
-		$this->Name = $Name;
-		$this->Damage = $Damage;
+		$this->name = $name;
+		$this->damage = $damage;
 	}
 	
 

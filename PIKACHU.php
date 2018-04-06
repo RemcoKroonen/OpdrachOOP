@@ -1,27 +1,15 @@
 <?php
 
-class PIKACHU extends POKEMON {
+class Pikachu extends Pokemon {
 
-	
+	public function __construct($name){
+		$pikachuAanval1 = new Attack('Electric Ring', 50);
+		$pikachuResistance = new Resistance('Fighting', 20);
+		$pikachuAanval2 = new Attack('Pika Punch', 20);
+		$pikachuWeakness = new Weakness('Fire', 1.5);
 
-
-
-	public function __construct(){
-
-		$PikachuAanval1 = new ATTACK('Electric Ring', 50);
-		$PikachuResistance = new RESISTANCE('Fighting', 20);
-		$PikachuAanval2 = new ATTACK('Pika Punch', 20);
-		$PikachuWeakness = new WEAKNESS('Fire', 1.5);
-
-
-		parent::__construct('Pikachu', 'Lightning', 60,[$PikachuAanval1, $PikachuAanval2], $PikachuWeakness, $PikachuResistance);
+		parent::__construct($name, 'Lightning', 60,[$pikachuAanval1, $pikachuAanval2], $pikachuWeakness, $pikachuResistance);
 	}
 
-
-
 }
-
-
-
-//$pikachu =  new Pokemon('Pikachu', 'Lightning', 60, [$pikachuAanval1, $pikachuAanval2], $pikachuWeakness, $pikachuResistance);
-//print_r('<pre>'. $pikachu . '</pre>');
+//vaste naam van de pokemon nu/variable

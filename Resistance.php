@@ -1,14 +1,14 @@
 <?php
-class RESISTANCE {
+class Resistance {
 
-	public	$EnergyType;
-	public	$Worth;
+	public	$energytype;
+	public	$worth;
 
 
-	public function __construct($EnergyType, $Worth)
+	public function __construct($energytype, $worth)
 	{
-		$this->EnergyType = $EnergyType;
-		$this->Worth = $Worth;
+		$this->energytype = $energytype;
+		$this->worth = $worth;
 	}
 
 }

@@ -1,78 +1,78 @@
 <?php
-class POKEMON {
+class Pokemon {
 
-	public	$Name;
-	public	$EnergyType;
-	public	$HitPoints;
-	public  $Attacks;
-	public  $Weakness;
-	public  $Resistance;
+	public	$name;
+	public	$energytype;
+	public	$hitpoints;
+	public  $attacks;
+	public  $weakness;
+	public  $resistance;
 
 
-	public function __construct($Name, $EnergyType, $HitPoints, $Attacks, $Weakness, $Resistance)
+	public function __construct($name, $energytype, $hitpoints, $attacks, $weakness, $resistance)
 	{
-		$this->Name = $Name;
-		$this->EnergyType = $EnergyType;
-		$this->HitPoints = $HitPoints;
-		$this->Attacks = $Attacks;
-		$this->Weakness = $Weakness;
-		$this->Resistance = $Resistance;
+		$this->name = $name;
+		$this->energytype = $energytype;
+		$this->hitpoints = $hitpoints;
+		$this->attacks = $attacks;
+		$this->weakness = $weakness;
+		$this->resistance = $resistance;
 	}
 	public function __toString() {
 		return json_encode($this);
 	}
 
-	public function Attacks($AttackedPokemon,$AttackName)
+	public function attacks($attackedpokemon,$attackname)
 	{
-		$TotalDamage = 0;
-		$AanvalDamage = 0;
+		$totaldamage = 0;
+		$aanvaldamage = 0;
 		echo "<br>";
-		echo  $this->Name.' valt '. $AttackedPokemon->Name. ' aan met de aanval '.$AttackName;
+		echo  $this->name.' valt '. $attackedpokemon->name. ' aan met de aanval '.$attackname;
 		//print_r($this->Attacks);
-		foreach ($this->Attacks as $AvailableAttack){
-			if ($AvailableAttack->Name == $AttackName) {
-				$AanvalDamage = $AvailableAttack->Damage;
+		foreach ($this->attacks as $availableattack){
+			if ($availableattack->name == $attackname) {
+				$aanvaldamage = $availableattack->damage;
 			}
 			//echo $AvailableAttack->Name;
 			//echo $AvailableAttack->Damage;
 		}
 
-		$TotalDamage = $AanvalDamage;
+		$totaldamage = $aanvaldamage;
 
-		if ($this->EnergyType == $AttackedPokemon->Weakness->EnergyType) {
-			$TotalDamage = $AttackedPokemon->Weakness->Multiplier*$AanvalDamage; //
+		if ($this->energytype == $attackedpokemon->weakness->energytype) {
+			$totaldamage = $attackedpokemon->weakness->multiplier*$aanvaldamage; //
 		}
-		if ($this->EnergyType == $AttackedPokemon->Resistance->EnergyType) {
-			$TotalDamage = $TotalDamage - $AttackedPokemon->Resistance->Worth;
+		if ($this->energytype == $attackedpokemon->resistance->energytype) {
+			$totaldamage = $totaldamage - $attackedpokemon->resistance->worth;
 		}
-		echo "<br>Doet ". $TotalDamage . " damage";
-		$AttackedPokemon->HitPoints = $AttackedPokemon->HitPoints - $TotalDamage;
+		echo "<br>Doet ". $totaldamage . " damage";
+		$attackedpokemon->hitpoints = $attackedpokemon->hitpoints - $totaldamage;
 
-		echo "<br> Nieuwe HitPoints van ".$AttackedPokemon->Name . " is " . $AttackedPokemon->HitPoints;
+		echo "<br> Nieuwe hitpoints van ".$attackedpokemon->name . " is " . $attackedpokemon->hitpoints;
 
 
 	}
 	public function ToonInfo(){
-		echo "<h3>".$this->Name."</h3>";
-		echo "Type: ". $this->EnergyType."<br>";
-		echo "Hitpoints: ". $this->HitPoints."<br>";
+		echo "<h3>".$this->name."</h3>";
+		echo "Type: ". $this->energytype."<br>";
+		echo "Hitpoints: ". $this->hitpoints."<br>";
 		echo "Attacks and Damage:";
-		foreach ($this->Attacks as $key) {
+		foreach ($this->attacks as $key) {
 			echo " ";
-			echo $key->Name . ",";
-			echo $key->Damage . " ";
+			echo $key->name . ",";
+			echo $key->damage . " ";
 			
 		}
 		echo "<br>";
 
 
 		echo "Weakness: ";
-		echo $this->Weakness->EnergyType . ","; 
-		echo $this->Weakness->Multiplier . "<br>";
+		echo $this->weakness->energytype . ","; 
+		echo $this->weakness->multiplier . "<br>";
 
 
 		echo "Resistance: ";
-		echo $this->Resistance->EnergyType . ",";
-		echo $this->Resistance->Worth . "<br>";
+		echo $this->resistance->energytype . ",";
+		echo $this->resistance->worth . "<br>";
 	}
 }
